@@ -11,7 +11,6 @@
 package com.xkf.rabbitmqha.ha.dao.mapper;
 
 import com.xkf.rabbitmqha.ha.dao.po.BrokerMessageLogPO;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -23,7 +22,6 @@ import java.util.List;
  * @create 2018/11/28
  * @since 1.0.0
  */
-@Repository
 public interface BrokerMessageLogMapper {
     /**
      *

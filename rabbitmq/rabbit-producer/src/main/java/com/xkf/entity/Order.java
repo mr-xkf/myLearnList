@@ -8,7 +8,7 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitproducer.entity;
+package com.xkf.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,13 +27,15 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Order implements Serializable {
+public class Order implements Serializable{
 
+    private static final long serialVersionUID = 1611718708759471472L;
     private String id;
     private String name;
     /**
      * 存储消息的唯一标识符
      */
     private String messageId;
+
 
 }

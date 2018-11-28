@@ -8,9 +8,9 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitproducer.producer;
+package com.xkf.producer;
 
-import com.xkf.rabbitproducer.entity.Order;
+import com.xkf.entity.Order;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +26,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class SendOrder {
+    @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Autowired
-    public SendOrder(
-            RabbitTemplate rabbitTemplate) {
-        this.rabbitTemplate = rabbitTemplate;
-    }
 
     /**
      * 发送订单
@@ -41,10 +37,8 @@ public class SendOrder {
      * @throws Exception 异常
      */
     public void send(Order order) throws Exception {
-
         CorrelationData correlationData = new CorrelationData();
         correlationData.setId(order.getMessageId());
-
         // exchange：交换机
         // routingKey：路由键
         // message：消息体内容

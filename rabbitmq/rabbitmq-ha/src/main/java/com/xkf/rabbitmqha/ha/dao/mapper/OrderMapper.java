@@ -21,7 +21,6 @@ import org.springframework.stereotype.Repository;
  * @create 2018/11/28
  * @since 1.0.0
  */
-@Repository
 public interface OrderMapper {
 
     /**
