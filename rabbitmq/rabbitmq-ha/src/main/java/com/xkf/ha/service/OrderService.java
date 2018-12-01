@@ -8,15 +8,15 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitmqha.ha.service;
+package com.xkf.ha.service;
 
-import com.xkf.rabbitmqha.entity.Order;
-import com.xkf.rabbitmqha.ha.constant.Constants;
-import com.xkf.rabbitmqha.ha.dao.mapper.BrokerMessageLogMapper;
-import com.xkf.rabbitmqha.ha.dao.mapper.OrderMapper;
-import com.xkf.rabbitmqha.ha.dao.po.BrokerMessageLogPO;
-import com.xkf.rabbitmqha.ha.producer.OrderSender;
-import com.xkf.rabbitmqha.ha.util.JSONUtil;
+import com.xkf.entity.Order;
+import com.xkf.ha.constant.Constants;
+import com.xkf.ha.dao.mapper.BrokerMessageLogMapper;
+import com.xkf.ha.dao.mapper.OrderMapper;
+import com.xkf.ha.dao.po.BrokerMessageLogPO;
+import com.xkf.ha.producer.OrderSender;
+import com.xkf.ha.util.JSONUtil;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,7 +41,7 @@ public class OrderService {
   private BrokerMessageLogMapper brokerMessageLogMapper;
 
   @Autowired
-  private  OrderSender orderSender;
+  private OrderSender orderSender;
 
   public void create(Order order) {
      //当前时间
@@ -54,7 +54,7 @@ public class OrderService {
     messageLogPO.setMessage(JSONUtil.toJSON(order));
     messageLogPO.setTryCount(0);
     messageLogPO.setStatus(Constants.OrderSendStatus.SENDING);
-    messageLogPO.setNextRetry(DateUtils.addMinutes(date,Constants.ORDER_TIMEOUT));
+    messageLogPO.setNextRetry(DateUtils.addMinutes(date, Constants.ORDER_TIMEOUT));
     this.brokerMessageLogMapper.insert(messageLogPO);
     //发送消息
     this.orderSender.send(order);

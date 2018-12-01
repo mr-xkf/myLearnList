@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈〉
  *
  * @author 13235
@@ -29,6 +29,18 @@ public class SendOrder {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    private final RabbitTemplate.ConfirmCallback confirmCallback = new RabbitTemplate.ConfirmCallback() {
+        @Override
+        public void confirm(CorrelationData correlationData, boolean b, String s) {
+            System.out.println("correlationData:" + correlationData.toString());
+            if (b) {
+                System.out.println("确认成功！");
+            }else{
+                System.out.println("确认失败！");
+            }
+        }
+    };
+
 
     /**
      * 发送订单
@@ -37,15 +49,15 @@ public class SendOrder {
      * @throws Exception 异常
      */
     public void send(Order order) throws Exception {
+        this.rabbitTemplate.setConfirmCallback(confirmCallback);
         CorrelationData correlationData = new CorrelationData();
         correlationData.setId(order.getMessageId());
         // exchange：交换机
         // routingKey：路由键
         // message：消息体内容
         // correlationData：消息唯一ID
-        this.rabbitTemplate.convertAndSend("order-exchange", "order.a", order, correlationData);
+        this.rabbitTemplate.convertAndSend("order-exchange", "order.v", order, correlationData);
     }
-
 
 
 }

@@ -59,5 +59,6 @@ public class OrderReceiver {
 
         //ACK,确认一条消息已经被消费
         channel.basicAck(deliveryTag,multiple);
+        System.out.println("确认ok....");
     }
 }

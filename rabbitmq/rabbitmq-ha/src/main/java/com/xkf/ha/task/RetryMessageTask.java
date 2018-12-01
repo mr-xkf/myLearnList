@@ -8,14 +8,14 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitmqha.ha.task;
+package com.xkf.ha.task;
 
-import com.xkf.rabbitmqha.entity.Order;
-import com.xkf.rabbitmqha.ha.constant.Constants;
-import com.xkf.rabbitmqha.ha.dao.mapper.BrokerMessageLogMapper;
-import com.xkf.rabbitmqha.ha.dao.po.BrokerMessageLogPO;
-import com.xkf.rabbitmqha.ha.producer.OrderSender;
-import com.xkf.rabbitmqha.ha.util.JSONUtil;
+import com.xkf.entity.Order;
+import com.xkf.ha.constant.Constants;
+import com.xkf.ha.dao.mapper.BrokerMessageLogMapper;
+import com.xkf.ha.dao.po.BrokerMessageLogPO;
+import com.xkf.ha.producer.OrderSender;
+import com.xkf.ha.util.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -54,7 +54,7 @@ public class RetryMessageTask {
             if (messageLogPO.getTryCount() >= Constants.MAX_RETRY_COUNT) {
                 //更新状态为失败
                 BrokerMessageLogPO logPO = new BrokerMessageLogPO();
-                logPO.setMessageId(logPO.getMessageId());
+                logPO.setMessageId(messageLogPO.getMessageId());
                 logPO.setStatus(Constants.OrderSendStatus.SEND_FAILURE);
                 this.brokerMessageLogMapper.changeBrokerMessageLogStatus(logPO);
             } else {

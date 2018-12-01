@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.xkf.rabbitmqha.ha.dao.mapper")
+@MapperScan(basePackages = "com.xkf.ha.dao.mapper")
 @EnableScheduling
 public class RabbitmqHaApplication {
 

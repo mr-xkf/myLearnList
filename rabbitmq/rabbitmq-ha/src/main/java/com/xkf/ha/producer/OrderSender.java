@@ -8,12 +8,12 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitmqha.ha.producer;
+package com.xkf.ha.producer;
 
-import com.xkf.rabbitmqha.entity.Order;
-import com.xkf.rabbitmqha.ha.constant.Constants;
-import com.xkf.rabbitmqha.ha.dao.mapper.BrokerMessageLogMapper;
-import com.xkf.rabbitmqha.ha.dao.po.BrokerMessageLogPO;
+import com.xkf.entity.Order;
+import com.xkf.ha.constant.Constants;
+import com.xkf.ha.dao.mapper.BrokerMessageLogMapper;
+import com.xkf.ha.dao.po.BrokerMessageLogPO;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +62,6 @@ public class OrderSender {
         //设置回调方法
         this.rabbitTemplate.setConfirmCallback(confirmCallback);
         CorrelationData correlationData = new CorrelationData(order.getMessageId());
-        this.rabbitTemplate.convertAndSend("order-exchange", "order.a", order, correlationData);
+        this.rabbitTemplate.convertAndSend("order-exchange", "order.b", order, correlationData);
     }
 }

@@ -8,7 +8,7 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitmqha.ha.util;
+package com.xkf.ha.util;
 
 
 import com.alibaba.fastjson.JSON;

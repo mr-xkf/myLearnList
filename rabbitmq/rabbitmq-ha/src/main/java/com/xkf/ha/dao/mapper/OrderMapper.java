@@ -8,10 +8,9 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitmqha.ha.dao.mapper;
+package com.xkf.ha.dao.mapper;
 
-import com.xkf.rabbitmqha.entity.Order;
-import org.springframework.stereotype.Repository;
+import com.xkf.entity.Order;
 
 /**
  * 〈一句话功能简述〉<br>

@@ -8,9 +8,9 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitmqha.ha.dao.mapper;
+package com.xkf.ha.dao.mapper;
 
-import com.xkf.rabbitmqha.ha.dao.po.BrokerMessageLogPO;
+import com.xkf.ha.dao.po.BrokerMessageLogPO;
 
 import java.util.List;
 
