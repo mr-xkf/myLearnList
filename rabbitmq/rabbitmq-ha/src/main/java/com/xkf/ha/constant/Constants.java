@@ -8,7 +8,7 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitmqha.ha.constant;
+package com.xkf.ha.constant;
 
 /**
  * 〈一句话功能简述〉<br>

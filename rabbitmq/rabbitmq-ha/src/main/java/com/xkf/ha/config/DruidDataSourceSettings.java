@@ -8,7 +8,7 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitmqha.ha.config;
+package com.xkf.ha.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;

@@ -8,7 +8,7 @@
  * 作者姓名           修改时间           版本号              描述
  */
 
-package com.xkf.rabbitmqha.entity;
+package com.xkf.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

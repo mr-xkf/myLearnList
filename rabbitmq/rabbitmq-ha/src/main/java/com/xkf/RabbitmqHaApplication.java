@@ -1,4 +1,4 @@
-package com.xkf.rabbitmqha;
+package com.xkf;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
